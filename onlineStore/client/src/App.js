@@ -1,17 +1,38 @@
-import React from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { BrowserRouter } from "react-router-dom";
 import AppRouter from "./components/AppRouter";
 import { NavBar } from "./components/NavBar";
+import {observer} from "mobx-react-lite";
+import {Context} from "./index";
+import {check} from "./http/userAPI";
+import {Spinner} from "react-bootstrap";
 
-function App() {
-  return (
-    <React.StrictMode>
-      <BrowserRouter className="App">
-        <NavBar />
-        <AppRouter />
-      </BrowserRouter>
-    </React.StrictMode>
-  );
-}
+const App = observer(() => {
+    const {user} = useContext(Context);
+    const [loading, setLoading] = useState(true);
 
-export default App;
+    useEffect(() => {
+        setTimeout(() => {
+            check().then(data => {
+                user.setUser(true);
+                user.setIsAuth(true);
+            }).finally(() => setLoading(false));
+        }, 1000)
+    }, []);
+
+    if(loading)
+    {
+        return <Spinner animation={"grow"}></Spinner>
+    }
+
+    return (
+        <React.StrictMode>
+            <BrowserRouter>
+                <NavBar />
+                <AppRouter />
+            </BrowserRouter>
+        </React.StrictMode>
+    );
+});
+
+export default  App;

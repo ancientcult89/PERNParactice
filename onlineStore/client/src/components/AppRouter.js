@@ -57,11 +57,10 @@ const AppRouter = () => {
             exact
           />
           <Route key={SHOP_ROUTE} path={SHOP_ROUTE} element={<Shop />} exact />
-
-          {/* автоматически редирект на главную страницу */}
-          <Route path="*" element={<Shop />} />
         </React.Fragment>
       }
+      {/* автоматически редирект на главную страницу */}
+      <Route path="*" element={<Shop />} />
     </Routes>
   );
 };

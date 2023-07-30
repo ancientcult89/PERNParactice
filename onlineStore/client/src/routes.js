@@ -1,7 +1,6 @@
 import Admin from "./pages/Admin";
 import Auth from "./pages/Auth";
 import Basket from "./pages/Basket";
-import Component from "./pages/Component";
 import DevicePage from "./pages/DevicePage";
 import Shop from "./pages/Shop";
 import {
@@ -38,7 +37,7 @@ export const publicRoutes = [
     Component: Auth,
   },
   {
-    path: DEVICE_ROUTE + "/:id",
+    path: DEVICE_ROUTE,
     Component: DevicePage,
   },
 ];

@@ -1,11 +1,8 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 
 const Shop = () => {
-    return (
-        <div>
-            SHOP
-        </div>
-    );
-}
+  return <Container></Container>;
+};
 
 export default Shop;

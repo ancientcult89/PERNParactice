@@ -11,7 +11,7 @@ const DevicePage = () => {
 
     useEffect(() => {
         fetchOneDevices(id).then(data => setDevice(data));
-    }, []);
+    }, [id]);
 
     return (
         <Container>
